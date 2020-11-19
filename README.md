@@ -28,7 +28,7 @@ composer require hyperf/di:~1.0.1
 ```
 如果你使用hyperf 2.0.x,你可以：
 ```
-composer require GiocoPlus/jwt-auth:~3.0.0
+composer require gioco-plus/hyperf-jwt-auth
 composer require hyperf/utils:~2.0.0
 composer require hyperf/cache:~2.0.0
 composer require hyperf/command:~2.0.0
@@ -56,7 +56,7 @@ composer require hyperf/di:~2.0.0
 ##### 1、拉取依赖 
 > 使用 `Hyperf 1.1.x` 版本,则
 ```shell
-composer require GiocoPlus/jwt-auth:~3.0.0
+composer require gioco-plus/hyperf-jwt-auth
 ``` 
 
 ##### 2、发布配置
