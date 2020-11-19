@@ -508,7 +508,7 @@ config/autoload/exceptions.php
 return [
     'handler' => [
         'http' => [
-            GiocoPlus\JWTAuth\Exception\TokenValidExceptionHandler::class,
+            GiocoPlus\JWTAuth\Exception\TokenValidExceptionHandler::class, // 放置在最上層
             Hyperf\HttpServer\Exception\Handler\HttpExceptionHandler::class,
             App\Exception\Handler\AppExceptionHandler::class,
         ],
