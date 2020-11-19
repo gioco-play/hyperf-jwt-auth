@@ -1,40 +1,6 @@
 ### 基于Hyperf(https://doc.hyperf.io/#/zh/README) 框架的 jwt 鉴权(json web token)组件。
 ### 采用基于https://github.com/lcobucci/jwt/tree/3.3 进行封装。
 ### 黑名单的设置参考了这篇文章https://learnku.com/articles/17883
-### 注意：
-1、不兼容2.x,如果想要使用3.x，需要重新发布配置，以前的token可能也会失效   
-2、按照hyperf原有的组件规范做重写了该包   
-3、支持多应用单点登录、多应用多点登录   
-4、修改了命名空间名，原来为`JwtAuth`，现在为`JWTAuth`   
-5、修改了文件名称，原来为`Jwt`,现在为`JWT`,原来为`Blacklist`,现在为`BlackList`   
-6、如有建议欢迎给我邮件，562405704@qq.com  
-7、composer.json不在依赖安装hyperf的包，需要自行依赖安装，具体依赖的包如下：
-```
-"hyperf/utils": "required hyperf/utils ~2.0.0 OR required hyperf/utils ~1.1.0",
-"hyperf/cache": "required hyperf/cache ~2.0.0 OR required hyperf/cache ~1.1.0",
-"hyperf/command": "required hyperf/command ~2.0.0 OR required hyperf/command ~1.1.0",
-"hyperf/config": "required hyperf/config ~2.0.0 OR required hyperf/config ~1.1.0",
-"hyperf/di": "required hyperf/di ~2.0.0 OR required hyperf/di ~1.1.0"
-```
-为什么要这样做？因为发现1.1.x和2.0.x的升级不影响该包的代码   
-如果你使用hyperf 1.1.x,你可以：
-```
-composer require gioco-plus/hyperf-jwt-auth
-composer require hyperf/utils:~1.0.1
-composer require hyperf/cache:~1.0.1
-composer require hyperf/command:~1.0.1
-composer require hyperf/config:~1.0.1
-composer require hyperf/di:~1.0.1
-```
-如果你使用hyperf 2.0.x,你可以：
-```
-composer require gioco-plus/hyperf-jwt-auth
-composer require hyperf/utils:~2.0.0
-composer require hyperf/cache:~2.0.0
-composer require hyperf/command:~2.0.0
-composer require hyperf/config:~2.0.0
-composer require hyperf/di:~2.0.0
-```
 ### 说明：
 
 > `jwt-auth` 支持多应用单点登录、多应用多点登录、多应用支持注销 token(token会失效)、支持多应用刷新 token  
@@ -54,16 +20,11 @@ composer require hyperf/di:~2.0.0
 
 ### 使用：
 ##### 1、拉取依赖 
-> 使用 `Hyperf 1.1.x` 版本,则
 ```shell
 composer require gioco-plus/hyperf-jwt-auth
 ``` 
 
 ##### 2、发布配置
-```shell
-php bin/hyperf.php jwt:publish --config
-```
-或者
 ```shell
 php bin/hyperf.php vendor:publish "gioco-plus/hyperf-jwt-auth"
 ```
@@ -203,10 +164,12 @@ return [
 Router::addGroup('/v1', function () {
     Router::get('/data', 'App\Controller\IndexController@getData');
 }, ['middleware' => [GiocoPlus\JWTAuth\Middleware\JWTAuthMiddleware::class]]);
+
 ```
 ##### 6、注解的路由验证
-请看官方文档：https://doc.hyperf.io/#/zh/middleware/middleware
-在你想要验证的地方加入 `jwt 验证中间` 件即可。
+```shell
+@Middleware(\GiocoPlus\JWTAuth\Middleware\JWTAuthMiddleware::class)
+```
 
 ##### 7、模拟登录获取token,具体情况下面的例子文件
 ```shell
