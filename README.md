@@ -65,7 +65,7 @@ php bin/hyperf.php jwt:publish --config
 ```
 或者
 ```shell
-php bin/hyperf.php vendor:publish GiocoPlus/jwt-auth
+php bin/hyperf.php vendor:publish "gioco-plus/hyperf-jwt-auth"
 ```
 ##### 3、jwt配置
 去配置 `config/autoload/jwt.php` 文件或者在配置文件 `.env` 里配置
