@@ -1,5 +1,5 @@
 {
-    "name": "gioco-plus/jwt-auth",
+    "name": "gioco-plus/hyperf-jwt-auth",
     "type": "library",
     "license": "MIT",
     "keywords": [
