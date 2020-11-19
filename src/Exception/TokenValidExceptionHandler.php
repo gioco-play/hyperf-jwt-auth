@@ -31,8 +31,8 @@ class TokenValidExceptionHandler extends ExceptionHandler
     {
         // 格式化输出
         $data = json_encode([
-            'code' => 0,
-            'msg' => 'JWT認證失敗'
+            'status' => 0,
+            'message' => 'JWT Auth Fail'
         ]);
         // 阻止异常冒泡
         $this->stopPropagation();
