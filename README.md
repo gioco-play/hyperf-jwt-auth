@@ -502,3 +502,16 @@ class IndexController
 >异常为 `TokenValidException` 验证失败的异常，会抛出 `401` ,   
 >`JWTException` 异常会抛出 `400`，   
 >最好你们自己在项目异常重新返回错误信息
+```shell
+config/autoload/exceptions.php
+
+return [
+    'handler' => [
+        'http' => [
+            GiocoPlus\JWTAuth\Exception\TokenValidExceptionHandler::class,
+            Hyperf\HttpServer\Exception\Handler\HttpExceptionHandler::class,
+            App\Exception\Handler\AppExceptionHandler::class,
+        ],
+    ],
+];
+```
