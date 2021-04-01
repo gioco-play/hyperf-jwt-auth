@@ -59,12 +59,13 @@ class JWT extends AbstractJWT
         }
 
         $signer = new $config['supported_algs'][$config['alg']];
-        $time = time();
+        $time = new \DateTimeImmutable();
+        $expiresAt = $time->add(new \DateInterval("PT{$config['ttl']}S"));
         $builder = JWTUtil::getBuilder()
             ->identifiedBy($uniqid) // 设置jwt的jti
             ->issuedAt($time)// (iat claim) 发布时间
             ->canOnlyBeUsedAfter($time)// (nbf claim) 在此之前不可用
-            ->expiresAt($time + $config['ttl']);// (exp claim) 到期时间
+            ->expiresAt($expiresAt);// (exp claim) 到期时间
 
         $claims[$this->tokenScenePrefix] = $this->getScene(); // 加入场景值
         foreach ($claims as $k => $v) {
